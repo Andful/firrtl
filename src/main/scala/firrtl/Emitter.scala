@@ -199,9 +199,9 @@ object EmitAllModulesAnnotation extends HasShellOptions {
       toAnnotationSeq = s =>
         s.split(",")
           .map {
-            case "disableMemRandomization" =>
+            case "disableRegisterRandomization" =>
               CustomDefaultRegisterEmission(useInitAsPreset = false, disableRandomization = true)
-            case "disableRegisterRandomization" => CustomDefaultMemoryEmission(MemoryNoInit)
+            case "disableMemRandomization" => CustomDefaultMemoryEmission(MemoryNoInit)
             case a                              => throw new PhaseException(s"Unknown emission options '$a'! (Did you misspell it?)")
           }
           .toSeq,
